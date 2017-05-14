@@ -12,7 +12,7 @@ export default {
   ],
   target: 'web',
   output: {
-    path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
+    path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`. In dev they are simply served from memory
     publicPath: '/',
     filename: 'bundle.js'
   },

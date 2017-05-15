@@ -4,10 +4,12 @@
   "description": "A starter package for teaching React and Redux",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch",
+    "start": "npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node buildScripts/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src buildScripts",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha --reporter spec buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Kristine",
   "license": "MIT",

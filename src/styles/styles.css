@@ -1,11 +1,10 @@
-html {
+body {
   background: #3f4b8c; /* Old browsers */
   background: -moz-linear-gradient(-45deg, #3f4b8c 0%, #d15e84 100%, #d15e84 100%, #ce7793 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, #3f4b8c 0%,#d15e84 100%,#d15e84 100%,#ce7793 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #3f4b8c 0%,#d15e84 100%,#d15e84 100%,#ce7793 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4b8c', endColorstr='#ce7793',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   font-family: 'Nunito Sans', sans-serif;
-  color: white;
 }
 
 html, body, #app, .main-container {
@@ -15,14 +14,25 @@ html, body, #app, .main-container {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  color: white;
+}
+
+.btn-primary{
+  background-color: #2a3990;
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:active:focus{
+  background-color: #3949ab;
+  box-shadow: none !important;
 }
 
 .header{
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100% - 15px);
-  height: 42px;
+  width: 100%;
+  height: 45px;
   background-color: rgba(0,0,0,0.4);
   overflow: hidden;
   padding-left: 15px;
@@ -31,18 +41,23 @@ html, body, #app, .main-container {
 .header a{
   position: relative;
   display: inline-block;
-  padding: 10px 12px;
+  padding: 13px 20px;
   color: white;
   text-decoration: none;
 }
 
-.header a:hover{
+.header a:hover, .header a:focus{
   background-color: rgba(0,0,0,0.4);
   color: #aaa;
 }
 
 a.active{
   background-color: rgba(0,0,0,0.2);
+  color: white;
+}
+
+.header a:hover, .header a:focus, .header a:active{
+  text-decoration: none;
 }
 
 .home-page {
@@ -52,6 +67,10 @@ a.active{
   height: 100%;
   justify-content: center;
   align-items: center;
+}
+
+.logo{
+  font-size: 30px;
 }
 
 .notes-page{

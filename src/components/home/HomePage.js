@@ -5,9 +5,12 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <div>
+        <span className="glyphicon glyphicon-edit logo" aria-hidden="true"></span>
+        <br></br>
         <h1>Welcome!</h1>
         <h3>This is a simple note taking app</h3>
-        <Link to="/notes" className="btn btn-lg btn-default">Create a note</Link>
+        <br></br>
+        <Link to="/notes" className="btn btn-md btn-primary">Create a note</Link>
       </div>
     </div>
   );

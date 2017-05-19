@@ -52,11 +52,11 @@ class NotesPage extends React.Component {
 NotesPage.defaultProps = {
   notes: [
     {
-      id: 1,
+      id: 1495205033620,
       content: "This is a note."
     },
     {
-      id: 2,
+      id: 1495205048306,
       content: "This is another note."
     }
   ]

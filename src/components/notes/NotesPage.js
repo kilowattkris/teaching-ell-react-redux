@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import NotesList from './NotesList';
-import NotesForm from './NotesForm';
-import {Button, Modal} from 'react-bootstrap';
+import NotesModal from './NotesModal';
 
 class NotesPage extends React.Component {
   constructor (props, context) {
@@ -41,10 +40,10 @@ class NotesPage extends React.Component {
       <div className="notes-page modal-container">
         <h1>Notes</h1>
         <NotesList notes={this.props.notes} />
-        <Button bsStyle="primary" bsSize="large" onClick={this.showForm}>
+        <div className="btn btn-lg btn-primary" onClick={this.showForm}>
           Add Note
-        </Button>
-        <NotesForm onChange={this.updateNoteState} note={this.state.note} show={this.state.show} onSave={this.saveNote} closeForm={this.closeForm} />
+        </div>
+        <NotesModal onChange={this.updateNoteState} note={this.state.note} show={this.state.show} onSave={this.saveNote} close={this.closeForm} title="New Note" />
       </div>
     );
   }

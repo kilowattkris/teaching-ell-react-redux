@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import NotesList from './NotesList';
 import NotesModal from './NotesModal';
+import {connect} from 'react-redux';
+import * as actions from '../../actions/noteActions';
 
 class NotesPage extends React.Component {
   constructor (props, context) {
@@ -16,8 +18,18 @@ class NotesPage extends React.Component {
     this.updateNoteState = this.updateNoteState.bind(this);
   }
 
-  saveNote() {
+  resetNoteState() {
+    let note = { content: "" };
+    this.setState({note : note});
+  }
 
+  saveNote(event) {
+    event.preventDefault();
+    let note = Object.assign({}, this.state.note);
+    note.id = Date.now();
+    this.props.createNote(note);
+    this.closeForm();
+    this.resetNoteState();
   }
 
   updateNoteState (event) {
@@ -49,21 +61,23 @@ class NotesPage extends React.Component {
   }
 }
 
-NotesPage.defaultProps = {
-  notes: [
-    {
-      id: 1495205033620,
-      content: "This is a note."
-    },
-    {
-      id: 1495205048306,
-      content: "This is another note."
-    }
-  ]
-};
-
 NotesPage.propTypes = {
-  notes: PropTypes.array.isRequired
+  notes: PropTypes.array.isRequired,
+  createNote: PropTypes.func.isRequired
 };
 
-export default NotesPage;
+function mapStateToProps(state){
+  return {
+    notes: state.notes
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    createNote: (note) => {
+      dispatch(actions.createNote(note));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotesPage);

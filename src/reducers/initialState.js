@@ -1,4 +1,4 @@
-export const initialState = {
+export default {
   notes: [
     {
       id: 1495205033620,

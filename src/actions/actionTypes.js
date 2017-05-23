@@ -1,1 +1,2 @@
 export const CREATE_NOTE = 'CREATE_NOTE';
+export const CREATE_NOTE_SUCCESS = 'CREATE_NOTE_SUCCESS';

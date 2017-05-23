@@ -56,7 +56,7 @@ class NoteApi {
     });
   }
 
-  static deletenote(noteId) {
+  static deleteNote(noteId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const indexOfNoteToDelete = notes.findIndex(note => {

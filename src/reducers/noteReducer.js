@@ -5,6 +5,9 @@ export default function noteReducer(state = [], action) {
     case types.CREATE_NOTE:
       return [...state, Object.assign({}, action.note)];
 
+    case types.CREATE_NOTE_SUCCESS:
+      return [...state, Object.assign({}, action.note)];
+
     default:
       return state;
   }

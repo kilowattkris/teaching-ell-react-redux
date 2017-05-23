@@ -27,7 +27,7 @@ class NotesPage extends React.Component {
     event.preventDefault();
     let note = Object.assign({}, this.state.note);
     note.id = Date.now();
-    this.props.createNote(note);
+    this.props.saveNote(note);
     this.closeForm();
     this.resetNoteState();
   }
@@ -63,7 +63,7 @@ class NotesPage extends React.Component {
 
 NotesPage.propTypes = {
   notes: PropTypes.array.isRequired,
-  createNote: PropTypes.func.isRequired
+  saveNote: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state){
@@ -74,8 +74,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    createNote: (note) => {
-      dispatch(actions.createNote(note));
+    saveNote: (note) => {
+      dispatch(actions.saveNote(note));
     }
   };
 }

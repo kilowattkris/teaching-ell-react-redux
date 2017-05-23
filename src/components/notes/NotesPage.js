@@ -8,35 +8,41 @@ class NotesPage extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.state = {
-      note: { content: "" },
+      note: { id: "", content: "" },
       show: false
     };
 
     this.saveNote = this.saveNote.bind(this);
+    this.editNote = this.editNote.bind(this);
     this.closeForm = this.closeForm.bind(this);
     this.showForm = this.showForm.bind(this);
     this.updateNoteState = this.updateNoteState.bind(this);
   }
 
   resetNoteState() {
-    let note = { content: "" };
+    let note = { id: "", content: "" };
     this.setState({note : note});
   }
 
   saveNote(event) {
     event.preventDefault();
     let note = Object.assign({}, this.state.note);
-    note.id = Date.now();
     this.props.saveNote(note);
     this.closeForm();
     this.resetNoteState();
   }
 
-  updateNoteState (event) {
+  updateNoteState(event) {
     const field = event.target.name;
     let note = this.state.note;
     note[field] = event.target.value;
     return this.setState({note: note});
+  }
+
+  editNote(note){
+    console.log(note);
+    this.setState({note: note});
+    this.showForm();
   }
 
   closeForm() {
@@ -51,7 +57,7 @@ class NotesPage extends React.Component {
     return (
       <div className="notes-page modal-container">
         <h1>Notes</h1>
-        <NotesList notes={this.props.notes} />
+        <NotesList notes={this.props.notes} onEdit={this.editNote} />
         <div className="btn btn-lg btn-primary" onClick={this.showForm}>
           Add Note
         </div>

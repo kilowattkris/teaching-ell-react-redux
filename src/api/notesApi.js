@@ -19,7 +19,8 @@ function replaceAll(str, find, replace) {
 }
 
 const generateId = (note) => {
-  return Date.now();
+  let id = Date.now();
+  return id;
 };
 
 class NoteApi {

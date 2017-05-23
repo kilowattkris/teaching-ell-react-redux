@@ -83,6 +83,14 @@ a.active{
   color: #333;
 }
 
+.note-id, .note-edit{
+  width: 20%;
+}
+
+.note-note{
+  width: 60%;
+}
+
 .note-modal{
   color: #333;
 }

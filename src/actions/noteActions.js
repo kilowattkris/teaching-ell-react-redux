@@ -9,6 +9,10 @@ export function createNoteSuccess(note) {
   return { type: types.CREATE_NOTE_SUCCESS, note: note };
 }
 
+export function updateNoteSuccess(note) {
+  return { type: types.UPDATE_NOTE_SUCCESS, note: note };
+}
+
 export function loadNotesSuccess(notes) {
   return { type: types.LOAD_NOTES_SUCCESS, notes: notes };
 }
@@ -16,7 +20,7 @@ export function loadNotesSuccess(notes) {
 export function saveNote(note){
   return function(dispatch, getState){
     return notesApi.saveNote(note).then((savedNote) => {
-      dispatch(createNoteSuccess(note));
+      note.id !== "" ? dispatch(updateNoteSuccess(note)) : dispatch(createNoteSuccess(note));
     }).catch((error) => {
       throw error;
     });

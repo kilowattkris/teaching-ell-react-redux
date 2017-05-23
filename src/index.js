@@ -8,11 +8,13 @@ import './styles/styles.css';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import initialState from './reducers/initialState';
+import * as noteActions from './actions/noteActions';
 
 /* eslint-disable no-console */
 console.log('Hello World!');
 
 const store = configureStore(initialState);
+store.dispatch(noteActions.loadNotes());
 
 render(
   <Provider store={store}>

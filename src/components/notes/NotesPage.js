@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import NotesList from './NotesList';
 import NotesModal from './NotesModal';
+import Loader from '../common/Loader';
 import {connect} from 'react-redux';
 import * as actions from '../../actions/noteActions';
 
@@ -52,6 +53,7 @@ class NotesPage extends React.Component {
       <div className="notes-page modal-container">
         <h1>Notes</h1>
         <NotesList notes={this.props.notes} />
+        {this.props.ajaxCallsInProgress > 0 && <Loader />}
         <div className="btn btn-lg btn-primary" onClick={this.showForm}>
           Add Note
         </div>
@@ -63,12 +65,14 @@ class NotesPage extends React.Component {
 
 NotesPage.propTypes = {
   notes: PropTypes.array.isRequired,
+  ajaxCallsInProgress: PropTypes.number.isRequired,
   saveNote: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state){
   return {
-    notes: state.notes
+    notes: state.notes,
+    ajaxCallsInProgress: state.ajaxCallsInProgress
   };
 }
 

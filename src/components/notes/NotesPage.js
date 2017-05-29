@@ -3,6 +3,7 @@ import NotesList from './NotesList';
 import NotesModal from './NotesModal';
 import Loader from '../common/Loader';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/noteActions';
 
 class NotesPage extends React.Component {
@@ -28,9 +29,11 @@ class NotesPage extends React.Component {
     event.preventDefault();
     let note = Object.assign({}, this.state.note);
     note.id = Date.now();
-    this.props.saveNote(note);
-    this.closeForm();
-    this.resetNoteState();
+    console.log(this.props.saveNote);
+    this.props.saveNote(note).then(() => {
+      this.closeForm();
+      this.resetNoteState();
+    });
   }
 
   updateNoteState (event) {
@@ -79,7 +82,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     saveNote: (note) => {
-      dispatch(actions.saveNote(note));
+      return dispatch(actions.saveNote(note));
     }
   };
 }

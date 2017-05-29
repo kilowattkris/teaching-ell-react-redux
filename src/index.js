@@ -13,7 +13,7 @@ import * as noteActions from './actions/noteActions';
 /* eslint-disable no-console */
 console.log('Hello World!');
 
-const store = configureStore(initialState);
+const store = configureStore();
 store.dispatch(noteActions.loadNotes());
 
 render(

@@ -12,7 +12,7 @@ import initialState from './reducers/initialState';
 /* eslint-disable no-console */
 console.log('Hello World!');
 
-const store = configureStore(initialState);
+const store = configureStore();
 
 render(
   <Provider store={store}>

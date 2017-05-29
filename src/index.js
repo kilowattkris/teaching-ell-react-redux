@@ -15,5 +15,7 @@ console.log('Hello World!');
 const store = configureStore();
 
 render(
-  <Root />, document.getElementById('app')
+  <Provider store={store}>
+    <Root />
+  </Provider>, document.getElementById('app')
 );

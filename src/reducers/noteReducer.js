@@ -7,6 +7,6 @@ export default function noteReducer(state = initialState.notes, action) {
       return [...state, Object.assign({}, action.note)];
 
     default:
-      return initialState.notes;
+      return state;
   }
 }

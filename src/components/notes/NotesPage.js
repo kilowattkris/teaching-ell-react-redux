@@ -5,13 +5,15 @@ import Loader from '../common/Loader';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/noteActions';
+import toastr from 'toastr';
 
 class NotesPage extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.state = {
       note: { content: "" },
-      show: false
+      show: false,
+      saving: false
     };
 
     this.saveNote = this.saveNote.bind(this);
@@ -27,12 +29,15 @@ class NotesPage extends React.Component {
 
   saveNote(event) {
     event.preventDefault();
+    this.setState({saving: true});
     let note = Object.assign({}, this.state.note);
     note.id = Date.now();
     console.log(this.props.saveNote);
     this.props.saveNote(note).then(() => {
       this.closeForm();
+      this.setState({saving: false});
       this.resetNoteState();
+      toastr.success('Note Saved!');
     });
   }
 
@@ -60,7 +65,7 @@ class NotesPage extends React.Component {
         <div className="btn btn-lg btn-primary" onClick={this.showForm}>
           Add Note
         </div>
-        <NotesModal onChange={this.updateNoteState} note={this.state.note} show={this.state.show} onSave={this.saveNote} close={this.closeForm} title="New Note" />
+        <NotesModal onChange={this.updateNoteState} note={this.state.note} show={this.state.show} onSave={this.saveNote} close={this.closeForm} title="New Note" saving={this.state.saving} />
       </div>
     );
   }

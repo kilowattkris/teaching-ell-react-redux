@@ -4,6 +4,7 @@ import {render} from 'react-dom';
 import Root from './routes';
 import App from './components/App';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/toastr/build/toastr.min.css';
 import './styles/styles.css';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';

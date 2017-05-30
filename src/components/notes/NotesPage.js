@@ -38,7 +38,12 @@ class NotesPage extends React.Component {
       this.setState({saving: false});
       this.resetNoteState();
       toastr.success('Note Saved!');
-    });
+    }).catch((error) => {
+        this.setState({saving: false});
+        this.resetNoteState();
+        toastr.error(error);
+      }
+    );
   }
 
   updateNoteState (event) {

@@ -2,7 +2,7 @@ import React from 'react';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import App from './components/App';
 import HomePage from './components/home/HomePage';
-import NotesPage from './components/notes/NotesPage';
+import NotesPage from './components/notes/NotesPage'; //eslint-disable-line import/no-named-as-default
 import Header from './components/common/Header';
 
 class Root extends React.Component {

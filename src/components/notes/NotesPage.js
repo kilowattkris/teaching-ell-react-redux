@@ -32,7 +32,6 @@ export class NotesPage extends React.Component {
     this.setState({saving: true});
     let note = Object.assign({}, this.state.note);
     note.id = Date.now();
-    console.log(this.props.saveNote);
     this.props.saveNote(note).then(() => {
       this.closeForm();
       this.setState({saving: false});

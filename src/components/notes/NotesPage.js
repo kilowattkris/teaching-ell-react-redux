@@ -13,13 +13,15 @@ class NotesPage extends React.Component {
     this.state = {
       note: { content: "" },
       show: false,
-      saving: false
+      saving: false,
+      errors: {}
     };
 
     this.saveNote = this.saveNote.bind(this);
     this.closeForm = this.closeForm.bind(this);
     this.showForm = this.showForm.bind(this);
     this.updateNoteState = this.updateNoteState.bind(this);
+    this.isNotesFormValid = this.isNotesFormValid.bind(this);
   }
 
   resetNoteState() {
@@ -27,8 +29,25 @@ class NotesPage extends React.Component {
     this.setState({note : note});
   }
 
+  isNotesFormValid() {
+    let ret = true;
+    let errors = {};
+    if(this.state.note.content.length < 1){
+      ret = false;
+      errors.content = "Note must be at least 1 character long.";
+    }
+    console.log(ret);
+    this.setState({ errors: errors });
+    return ret;
+  }
+
   saveNote(event) {
     event.preventDefault();
+
+    if(!this.isNotesFormValid()){
+      return; //don't proceed is the notesForm is invalid
+    }
+
     this.setState({saving: true});
     let note = Object.assign({}, this.state.note);
     note.id = Date.now();
@@ -70,7 +89,7 @@ class NotesPage extends React.Component {
         <div className="btn btn-lg btn-primary" onClick={this.showForm}>
           Add Note
         </div>
-        <NotesModal onChange={this.updateNoteState} note={this.state.note} show={this.state.show} onSave={this.saveNote} close={this.closeForm} title="New Note" saving={this.state.saving} />
+        <NotesModal onChange={this.updateNoteState} note={this.state.note} show={this.state.show} onSave={this.saveNote} close={this.closeForm} title="New Note" saving={this.state.saving} errors={this.state.errors} />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {Modal} from 'react-bootstrap';
 import NotesForm from './NotesForm';
 
-const NotesModal = ({show, close, onChange, onSave, note, title, saving}) => {
+const NotesModal = ({show, close, onChange, onSave, note, title, saving, errors}) => {
   return (
     <Modal
       className="note-modal"
@@ -13,7 +13,7 @@ const NotesModal = ({show, close, onChange, onSave, note, title, saving}) => {
         <Modal.Title id="contained-modal-title">{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <NotesForm onChange={onChange} note={note} onSave={onSave} saving={saving} />
+        <NotesForm onChange={onChange} note={note} onSave={onSave} saving={saving} errors={errors} />
       </Modal.Body>
     </Modal>
   );
@@ -26,7 +26,8 @@ NotesModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  saving: PropTypes.bool.isRequired
+  saving: PropTypes.bool.isRequired,
+  errors: PropTypes.object
 };
 
 export default NotesModal;

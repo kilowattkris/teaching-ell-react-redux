@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/noteActions';
 import toastr from 'toastr';
 
-class NotesPage extends React.Component {
+export class NotesPage extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.state = {

@@ -15,4 +15,9 @@ describe('NotesPage', () => {
   it('should have a NotesList component', () => {
     expect(wrapper.find(NotesList).length).toBe(1);
   });
+  it('should show modal when \"Add Note\" button is clicked', () => {
+    let btn = wrapper.find('.btn');
+    btn.simulate('click');
+    expect(wrapper.state().show).toBe(true);
+  });
 });

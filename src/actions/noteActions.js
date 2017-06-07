@@ -29,7 +29,7 @@ export function saveNote(note){
 export function loadNotes() {
   return function(dispatch){
     dispatch(beginAjaxCall());
-    notesApi.getAllNotes().then((notes) => {
+    return notesApi.getAllNotes().then((notes) => {
       dispatch(loadNotesSuccess(notes));
     }).catch(error => {
       throw error;

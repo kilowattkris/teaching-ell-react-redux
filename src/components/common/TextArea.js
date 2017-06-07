@@ -1,7 +1,10 @@
 import React, {PropTypes} from 'react';
 
-const TextArea = ({name, onChange, value}) => {
+const TextArea = ({name, onChange, value, error}) => {
   let wrapperClass = 'form-group';
+  if(error){
+    wrapperClass += ' has-error';
+  }
   return (
     <div className={wrapperClass}>
       <textarea
@@ -14,6 +17,7 @@ const TextArea = ({name, onChange, value}) => {
         autoComplete="false"
         spellCheck="false"
       />
+      {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
 };
@@ -21,7 +25,8 @@ const TextArea = ({name, onChange, value}) => {
 TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  error: PropTypes.string
 };
 
 export default TextArea;

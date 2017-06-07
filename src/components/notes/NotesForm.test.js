@@ -9,7 +9,8 @@ function setup(saving) {
     note: { content: "" },
     saving: saving,
     onChange: () => {},
-    onSave: () => {}
+    onSave: () => {},
+    errors: {}
   };
 
   return shallow(<NotesForm {...props} />);
